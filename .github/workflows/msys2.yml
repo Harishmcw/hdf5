@@ -28,6 +28,7 @@ jobs:
           - { icon: '🟦', sys: mingw64 }
           - { icon: '🟨', sys: ucrt64  }
           - { icon: '🟧', sys: clang64 }
+          - { icon: '🟪', sys: clangarm64 }
     name: ${{ matrix.icon }} MSYS2-${{ matrix.sys }}-${{ inputs.build_mode }}
     defaults:
       run:
