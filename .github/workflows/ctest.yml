@@ -564,7 +564,7 @@ build_and_test_linux:
               path: ${{ runner.workspace }}/maven-artifacts
               if-no-files-found: warn
 
-  build_and_test_mac_latest:
+build_and_test_mac_latest:
   # MacOS w/ Clang
   #
     name: "MacOS Clang"
