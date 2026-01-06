@@ -3,6 +3,7 @@
 # https://github.com/codespell-project/actions-codespell
 name: codespell
 on:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
