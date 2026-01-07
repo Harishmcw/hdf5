@@ -342,6 +342,14 @@ jobs:
           cmake --workflow --preset=ci-StdShar-MSVC-ARM64 --fresh
         shell: bash
 
+      - name: Upload build deps for debugging
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: ci-build-deps
+          path: |
+            ${{ github.workspace }}/build/**/_deps/**
+
       - name: Sign files with Trusted Signing
         uses: azure/trusted-signing-action@1d365fec12862c4aa68fcac418143d73f0cea293 # v0.5.11
         with:
