@@ -674,7 +674,7 @@
         "ci-x64-Release-MSVC"
       ]
     },
-  {
+    {
       "name": "ci-StdShar-MSVC-ARM64",
       "configurePreset": "ci-StdShar-MSVC-ARM64",
       "inherits": [
