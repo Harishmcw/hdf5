@@ -47,6 +47,7 @@ jobs:
     with:
       use_tag: ${{ needs.log-the-inputs.outputs.rel_tag }}
       use_environ: release
+      use_ignore: ignore
 
   call-aws-c-s3-build:
     needs: call-workflow-tarball
