@@ -58,7 +58,7 @@ mark_as_advanced (KWSYS_TGZ_NAME)
 # filter plugin options
 ########################
 
-set (PLUGIN_TGZ_ORIGPATH "https://github.com/Harishmcw/hdf5_plugins/releases/download/snapshot" CACHE STRING "Use PLUGINS from original location")
+set (PLUGIN_TGZ_ORIGPATH "https://github.com/Harishmcw/hdf5_plugins/releases/download/snapshot")
 set (PLUGIN_TGZ_NAME "hdf5_plugins-master.tar.gz" CACHE STRING "Use PLUGINS from compressed file")
 mark_as_advanced (PLUGIN_TGZ_ORIGPATH)
 mark_as_advanced (PLUGIN_TGZ_NAME)
