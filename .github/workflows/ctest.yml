@@ -273,7 +273,6 @@ jobs:
           distribution: 'temurin'
           architecture: 'aarch64'
 
-      # CRITICAL: Set environment for MSVC to properly detect ARM64 compiler
       - name: Set environment for MSVC ARM64 (Windows)
         run: |
           echo "CXX=cl.exe" >> $GITHUB_ENV
@@ -339,7 +338,7 @@ jobs:
           SIGNTOOLDIR: ${{ github.workspace }}/Microsoft.Windows.SDK.BuildTools/bin/10.0.22621.0/arm64
         run: |
           cd "${{ runner.workspace }}/hdf5/${{ steps.set-file-base.outputs.SOURCE_BASE }}"
-          cmake --workflow --preset=ci-StdShar-MSVC-ARM64 --fresh
+          cmake --workflow --preset=${{ inputs.preset_name }}-MSVC-ARM64 --fresh
         shell: bash
 
       - name: Upload build deps for debugging
