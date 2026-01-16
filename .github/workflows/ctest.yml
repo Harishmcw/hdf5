@@ -332,9 +332,10 @@ jobs:
             json: '{"Endpoint": "${{ secrets.AZURE_ENDPOINT }}","CodeSigningAccountName": "${{ secrets.AZURE_CODE_SIGNING_NAME }}","CertificateProfileName": "${{ secrets.AZURE_CERT_PROFILE_NAME }}"}'
         if: ${{ needs.check-secret.outputs.sign-state == 'exists' }}
 
-      - name: Install WiX Toolset (Windows ARM64)
+      - name: Install WiX v4
         run: |
-          choco install wixtoolset --version=3.14.1 -y
+          dotnet tool install --global wix --version 4.*
+          echo "$env:USERPROFILE\.dotnet\tools" >> $env:GITHUB_PATH
         shell: pwsh
 
       - name: Run CTest (Windows ARM64)
