@@ -246,8 +246,12 @@ target_include_directories(${ZLIB_LIB_TARGET}
     PRIVATE "${CMAKE_BINARY_DIR}"
     PUBLIC "${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}"
 )
-if (MSVC AND CMAKE_CL_64)
-  set_target_properties (${ZLIB_LIB_TARGET} PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
+if (MSVC)
+  if (CMAKE_SYSTEM_PROCESSOR MATCHES "^(AMD64|x86_64)$")
+    set_target_properties(${ZLIB_LIB_TARGET} PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
+  elseif (CMAKE_SYSTEM_PROCESSOR STREQUAL "ARM64")
+    set_target_properties(${ZLIB_LIB_TARGET} PROPERTIES STATIC_LIBRARY_FLAGS "/machine:ARM64")
+  endif()
 endif ()
 set_target_properties(${ZLIB_LIB_TARGET} PROPERTIES
     PUBLIC_HEADER ""
