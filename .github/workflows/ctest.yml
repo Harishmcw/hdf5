@@ -332,6 +332,14 @@ jobs:
             json: '{"Endpoint": "${{ secrets.AZURE_ENDPOINT }}","CodeSigningAccountName": "${{ secrets.AZURE_CODE_SIGNING_NAME }}","CertificateProfileName": "${{ secrets.AZURE_CERT_PROFILE_NAME }}"}'
         if: ${{ needs.check-secret.outputs.sign-state == 'exists' }}
 
+      - name: Install WiX v3.14
+        run: |
+          Invoke-WebRequest -Uri https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip -OutFile wix314-binaries.zip
+          Expand-Archive -Path wix314-binaries.zip -DestinationPath C:\wix314
+          echo "C:\wix314" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "WIX=C:\wix314" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        shell: pwsh
+
       - name: Run CTest (Windows ARM64)
         env:
           BINSIGN: ${{ needs.check-secret.outputs.sign-state }}
